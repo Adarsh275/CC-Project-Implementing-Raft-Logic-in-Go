@@ -5,9 +5,12 @@ import (
 	"time"
 )
 
-/* startElectionTimer implements an election timer. It should be launched whenever
+/*
+	startElectionTimer implements an election timer. It should be launched whenever
+
 we want to start a timer towards becoming a candidate in a new election.
-This function runs as a go routine */
+This function runs as a go routine
+*/
 func (this *RaftNode) startElectionTimer() {
 	timeoutDuration := time.Duration(3000+rand.Intn(3000)) * time.Millisecond
 	this.mu.Lock()
@@ -99,10 +102,22 @@ func (this *RaftNode) startElection() {
 				// You probably need to have implemented becomeFollower before this.
 
 				//-------------------------------------------------------------------------------------------/
-				if reply.Term > {
+				if reply.Term > this.currentTerm {
 					// TODO
-				} else if reply.Term ==  {
+					this.write_log("Candidate has older term, switched to Follower")
+					this.becomeFollower(reply.Term)
+					return
+				} else if reply.Term == this.currentTerm {
 					// TODO
+					if reply.VoteGranted {
+						votesReceived += 1
+						if votesReceived > (len(this.peersIds)+1)/2 {
+							this.write_log("Candidate %d has won the election by majority", this.id)
+							this.startLeader()
+							return
+						}
+					}
+
 				}
 				//-------------------------------------------------------------------------------------------/
 
@@ -117,9 +132,13 @@ func (this *RaftNode) startElection() {
 // becomeFollower sets a node to be a follower and resets its state.
 func (this *RaftNode) becomeFollower(term int) {
 	this.write_log("became Follower with term=%d; log=%v", term, this.log)
-
+	this.state = "Follower"
+	this.votedFor = -1
+	this.currentTerm = term
+	this.lastElectionTimerStartedTime = time.Now()
+	go this.startElectionTimer()
 	// IMPLEMENT becomeFollower; do you need to start a goroutine here, maybe?
-	//-------------------------------------------------------------------------------------------/
+	// -------------------------------------------------------------------------------------------/
 	// TODO
 	//-------------------------------------------------------------------------------------------/
 }
