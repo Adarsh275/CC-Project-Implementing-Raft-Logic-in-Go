@@ -63,5 +63,5 @@ func Test2(t *testing.T) {
 	sleepMs(3000)
 
 	cluster.ReconnectPeer(origLeaderId)
-	sleepMs(15000)
+	sleepMs(3000)
 }
