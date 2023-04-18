@@ -86,6 +86,6 @@ For evaluation, you will need to walk through the output you got from the Tests 
 ## Team Meamers 
 
 * PES2UG20CS016   Adarsh Kumar
-* PES1UG20CS113   Chinmay
-* PES1UG21CS805   Ankit
-* PES1UG20CS805   Dhanush
+* PES1UG20CS113   Chinmay Aland
+* PES1UG21CS805   Ankit Borkar
+* PES1UG20CS805   Dhanush Virupaksha
