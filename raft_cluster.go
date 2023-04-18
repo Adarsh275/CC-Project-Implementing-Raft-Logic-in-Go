@@ -118,9 +118,12 @@ func (this *Cluster) ReconnectPeer(id int) {
 	this.nodes[id].raftLogic.mu.Unlock()
 }
 
-/* getClusterLeader checks that only a single server thinks it's the leader.
+/*
+	getClusterLeader checks that only a single server thinks it's the leader.
+
 Returns the leader's id and term. It retries several times if no leader is
-identified yet. */
+identified yet.
+*/
 func (this *Cluster) getClusterLeader() int {
 	for r := 0; r < 20; r++ {
 		leaderId := -1
