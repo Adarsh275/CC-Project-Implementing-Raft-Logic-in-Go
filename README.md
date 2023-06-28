@@ -9,7 +9,7 @@
 
 ## **What you're given:**
 
-You are provided with a GoLang project structure, which, when complete, will allow you to successfully demonstrate leader election and log replication via Raft. However, parts of the code are deliberately missing; Your job is to fill it in, and make sure that expected behaviour is observed in scenarios such as network partitioning.
+You are provided with a GoLang project structure, which, when complete, will allow you to successfully demonstrate leader election and log replication via Raft. Make sure that expected behaviour is observed in scenarios such as network partitioning.
 ```
 .
 ├── go.mod
@@ -70,22 +70,18 @@ go test -v -race -run Test2 > verbose/2.log
 The above command executes a couple of scenarios for your code. Read through the logs generated in the verbose directory for **Test1** , and make sure to have all 5 files open in NodeLogs and watch them update in real time for **Test2** (like this:)
 
 <p align="center">
-  <img src="images/test2.png" />
+  <img src="images/test2.png"/>
 </p>
 
 You could also instead tail -f the files with tmux, like you did for Experiment 4.
 
 For evaluation, you will need to walk through the output you got from the Tests 1 and 2 and explain why it's expected behaviour. You will also need to then execute test-cases given to you later and do the same. **(Test 3 given to you will fail by default; it's your job to explain why and how to fix it.) (refer to the last paragraph of 'how you should start')**
 
-
-## **For queries, contact:**
-
-**RR Campus:** [**tacloudcomputing@gmail.com**](mailto:tacloudcomputing@gmail.com)
-
-
 ## Team Meamers 
 
-* PES2UG20CS016   Adarsh Kumar
-* PES1UG20CS113   Chinmay Aland
-* PES1UG21CS805   Ankit Borkar
-* PES1UG20CS805   Dhanush Virupaksha
+| NAME | SRN |
+| :-----------: | :-----------: |
+| PES2UG20CS016 | Adarsh Kumar |
+| PES1UG20CS113 | Chinmay Aland |
+| PES1UG21CS805 | Ankit Borkar |
+| PES1UG20CS805 | Dhanush Virupaksha |
